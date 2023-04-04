@@ -29,16 +29,16 @@ void NU32DIP_Startup() {
 
     // turn on UART1 without an interrupt
     U1MODEbits.BRGH = 0; // set baud to NU32_DESIRED_BAUD
-    U1BRG = ((NU32DIP_SYS_FREQ / NU32DIP_DESIRED_BAUD) / 16) - 1; //BRG = BAUD RATE GENERATOR. WHEN PIC NEESD TO SEND DATA TO COMPUTER, 
-
-    // 8 bit, no parity bit, and 1 stop bit (8N1 setup)
+    U1BRG = ((NU32DIP_SYS_FREQ / NU32DIP_DESIRED_BAUD) / 16) - 1; //BRG = BAUD RATE GENERATOR. WHEN PIC NEESD TO SEND DATA TO COMPUTER, #defined NU32DIP_SYS_FREQ and NU32DIP_DESIRED_BAUD
+  
+    // 8 bit, no parity bit, and 1 stop bit (8N1 setup = type of UART communication)
     U1MODEbits.PDSEL = 0;
     U1MODEbits.STSEL = 0;
 
     // configure TX & RX pins as output & input pins
     U1STAbits.UTXEN = 1;
     U1STAbits.URXEN = 1;
-    // configure without hardware flow control
+    // configure without hardware flow control (saves us 2 pins this way)
     U1MODEbits.UEN = 0;
 
     // enable the uart
@@ -77,7 +77,7 @@ void NU32DIP_ReadUART1(char * message, int maxLength) {
 // Write a character array using UART1
 
 void NU32DIP_WriteUART1(const char * string) {
-    while (*string != '\0') {
+    while (*string != '\0') {                       // '\0' is the null character telling us end of data we want to send.
         while (U1STAbits.UTXBF) {
             ; // wait until tx buffer isn't full
         }
