@@ -1,3 +1,4 @@
+// this program sends a number 0-3.3V with 100 increments with a 1 ms delay between every write.
 #include "nu32dip.h" // constants, functions for startup and UART
 
 void blink(int, int); // blink the LEDs function
@@ -9,11 +10,18 @@ int main(void) {
   
   NU32DIP_Startup(); // cache on, interrupts on, LED/button init, UART init
   while (1) {
-    NU32DIP_ReadUART1(message, 100); // wait here until get message from computer
-    //sscanf(message, "%d", &NumOfBlinks); // we expect a number and store it in the number of blinks variable
-    //NU32DIP_ReadUART1(message, 100);
-    //sscanf(message, "%d", &DurationOfBlinks);
-    NU32DIP_WriteUART1(message); // send message back
+      int i = 0;
+      for(i=0;i<100; i++) {
+          sprintf(message,"%f\r\n",i*3.3/100.0);
+          NU32DIP_WriteUART1(message); // send message back
+          //make 1 ms delay between printing
+          _CP0_SET_COUNT(0); // set timer to 0
+          while(_CP0_GET_COUNT()<24000) {} // Delay for 1ms
+      }
+      // wait 5 seconds after for loop
+      _CP0_SET_COUNT(0); // set timer to 0
+      while(_CP0_GET_COUNT()<24000000 * 5) {} // Delay for 5s
+      }
     NU32DIP_WriteUART1("\r\n"); // carriage return and newline
 	if (NU32DIP_USER){
 		blink(5, 500); // 5 times, 500ms each time
