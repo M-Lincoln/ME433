@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=nu32dip.c template.c
+SOURCEFILES_QUOTED_IF_SPACED=nu32dip.c template_sine_wave.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/template.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/nu32dip.o.d ${OBJECTDIR}/template.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/template_sine_wave.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/nu32dip.o.d ${OBJECTDIR}/template_sine_wave.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/template.o
+OBJECTFILES=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/template_sine_wave.o
 
 # Source Files
-SOURCEFILES=nu32dip.c template.c
+SOURCEFILES=nu32dip.c template_sine_wave.c
 
 
 
@@ -133,11 +133,11 @@ ${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/20e4dff1872098
 	@${RM} ${OBJECTDIR}/nu32dip.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/nu32dip.o.d" -o ${OBJECTDIR}/nu32dip.o nu32dip.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/template.o: template.c  .generated_files/flags/default/fde5ba5b58869b8b4f8c40120c7e5366d96a17ed .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+${OBJECTDIR}/template_sine_wave.o: template_sine_wave.c  .generated_files/flags/default/3437f5952c3cbf8c38361c11e32827d9efb30eb6 .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/template.o.d 
-	@${RM} ${OBJECTDIR}/template.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/template.o.d" -o ${OBJECTDIR}/template.o template.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/template_sine_wave.o.d 
+	@${RM} ${OBJECTDIR}/template_sine_wave.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/template_sine_wave.o.d" -o ${OBJECTDIR}/template_sine_wave.o template_sine_wave.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
 ${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/723a42eb726baab4e77dd05b9feaaab1a4d8cea5 .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
@@ -146,11 +146,11 @@ ${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/723a42eb726baa
 	@${RM} ${OBJECTDIR}/nu32dip.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/nu32dip.o.d" -o ${OBJECTDIR}/nu32dip.o nu32dip.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/template.o: template.c  .generated_files/flags/default/d35f5fb257f4d74127381970d6b430e1f56708ba .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+${OBJECTDIR}/template_sine_wave.o: template_sine_wave.c  .generated_files/flags/default/4d755c8036da83fe518fc97b9722683682f21f24 .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/template.o.d 
-	@${RM} ${OBJECTDIR}/template.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/template.o.d" -o ${OBJECTDIR}/template.o template.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/template_sine_wave.o.d 
+	@${RM} ${OBJECTDIR}/template_sine_wave.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/template_sine_wave.o.d" -o ${OBJECTDIR}/template_sine_wave.o template_sine_wave.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

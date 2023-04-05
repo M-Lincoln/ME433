@@ -15,7 +15,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>nu32dip.c</itemPath>
-      <itemPath>template.c</itemPath>
+      <itemPath>template_sine_wave.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

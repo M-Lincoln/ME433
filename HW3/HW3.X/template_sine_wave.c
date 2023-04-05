@@ -5,8 +5,6 @@ void blink(int, int); // blink the LEDs function
 
 int main(void) {
   char message[100];
-  //int NumOfBlinks;
-  //int DurationOfBlinks;
   
   NU32DIP_Startup(); // cache on, interrupts on, LED/button init, UART init
   while (1) {
@@ -22,12 +20,6 @@ int main(void) {
       _CP0_SET_COUNT(0); // set timer to 0
       while(_CP0_GET_COUNT()<24000000 * 5) {} // Delay for 5s
       }
-    NU32DIP_WriteUART1("\r\n"); // carriage return and newline
-	if (NU32DIP_USER){
-		blink(5, 500); // 5 times, 500ms each time
-        //blink(NumOfBlinks, DurationOfBlinks); // 5 times, 500ms each time
-	}
-  }
 }
 
 // blink the LEDs

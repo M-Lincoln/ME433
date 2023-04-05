@@ -61,10 +61,10 @@ def serial_getter():
             break
         yield line
 
-if len(sys.argv) < 2:
-    raise Exception("Ruh roh..no port specified!")
+#if len(sys.argv) < 2:
+#    raise Exception("Ruh roh..no port specified!")
 
-ser = serial.Serial(sys.argv[1], 230400, timeout=1)
+ser = serial.Serial("COM3", 230400, timeout=1)
 
 fig, ax = plt.subplots()
 plotter = Plotter(ax)
