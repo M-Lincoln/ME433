@@ -1,0 +1,11 @@
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-F_Cu.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-B_Cu.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-F_Paste.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-B_Paste.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-F_Silkscreen.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-B_Silkscreen.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-F_Mask.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-B_Mask.gbr'.
+Plotted to 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-Edge_Cuts.gbr'.
+Created Gerber job file 'C:\Users\madel\OneDrive\Documents\ME433\Github\ME433\HW4\HW4\HW4-job.gbrjob'.
+Info: Done.
