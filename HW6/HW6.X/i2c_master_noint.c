@@ -18,19 +18,42 @@ int main (){
 //    i2c_master_send(0b01111111); // send the value to make GP0-GP6 inputs (1) and GP7 output (0))
 //    i2c_master_stop(); // send stop bit
     // blink the yellow LED for a heartbeat, everything is ok
-    NU32DIP_YELLOW = 0; // turn yellow LED ON
+    NU32DIP_GREEN = 1; // turn green LED OFF
     
     while(1) {
         // blink GP7:
-        turnOn_GP7(); // turn on GP7 (call func)
-        NU32DIP_YELLOW = 1;// blink yellow LED (turn it off)
+        //turnOn_GP7(); // turn on GP7 (call func)
+         NU32DIP_GREEN = 0;// blink green LED (turn it on) FOR DEBUGGING ONLY
         _CP0_SET_COUNT(0); // set timer to 0
         while (_CP0_GET_COUNT() < 24000000) {} // Delay for 1s
-        turnOff_GP7();// turn off GP7
-        NU32DIP_YELLOW = 0;// blink yellow LED (turn it on)
+        //turnOff_GP7();// turn off GP7 FOR DEBUGGING ONLY
+         NU32DIP_GREEN = 1;// blink green LED (turn it off) FOR DEBUGGING ONLY
         _CP0_SET_COUNT(0); // set timer to 0
         while (_CP0_GET_COUNT() < 24000000) {} // Delay for 1s
+        
+        // read from GP0
+        unsigned short r;
+        r = read_from_GP0();
+        if(r){
+            turnOn_GP7(); // turn on GP7 (call func) 
+        }
+        else { 
+            turnOff_GP7();// turn off GP7
+        }
+                
     }
+}
+
+int read_from_GP0(){
+    i2c_master_start();// send start bit
+    i2c_master_send(0b01000000);// send address with write bit (0)
+    i2c_master_send(0x09); // send register you want to read from (GPIO register, which reads the value on the port)
+    i2c_master_restart();// restart
+    i2c_master_send(0b01000001);// send address with read bit
+    unsigned char r = i2c_master_recv(); // receive a byte of data
+    i2c_master_ack(1);// send the ACK bit after you read, you either acknowledge or not acknowledge
+    i2c_master_stop();// send the stop bit
+    return r&0b00000001; // I only care about the right-most bit and if GP0 is pushed or not
 }
 
 void generic_i2c_write(unsigned char address, unsigned char reg, unsigned char value){
