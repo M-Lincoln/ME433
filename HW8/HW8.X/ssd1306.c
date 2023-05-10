@@ -21,11 +21,15 @@ int main(){
     
     while(1) {
         char m[100];
-        sprintf(m,"hello"); // into char m, put hello. m[0] = h
+        char n[100];
+        sprintf(m,"I love Noah Katz"); // into char m, put hello. m[0] = h
+        sprintf(n,"and his butt");
         unsigned char character = 0x41; // should be a capital A in ascii
-        unsigned char x_position = 50;
-        unsigned char y_position = 5;
-        drawChar(character, x_position, y_position);
+        unsigned char x_position = 1;
+        unsigned char y_position = 1;
+        //drawChar(character, x_position, y_position); // draw 1 character
+        drawString(m,x_position,y_position);
+        drawString(n,x_position,10);
         //blink green LED & 1 pixel on OLED for debugging purposes only
         NU32DIP_GREEN = 0;// turn on GREEN LED
 //        // blink one pixel on screen for debugging purposes only

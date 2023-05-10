@@ -108,13 +108,19 @@ void drawChar(unsigned char letter, unsigned char x, unsigned char y){
     int j;
     int i;
     for (j=0;j<5;j++){ // 5x we are going to go into the ASCII table and grab one of those columns
-        unsigned char column = ASCII[letter-0x20][j]; //ASCII[1][j];
+        unsigned char column = ASCII[letter-0x20][j]; 
         for (i=0;i<8;i++){ // loop through every pixel in that 8-bit number and decide whether pixel should be turning on or off
             ssd1306_drawPixel(x+j,y+i,(column>>i)&0b1); // bit-shifting column goes through bits 0-7. column&0b1 puts zeros in bit1-bit7, and all I have is whether bit 0 is a zero or a 1. if both bits are 1, then the resulting bit = 1, otherwise, the resulting bit = 0;
             ssd1306_update(); // send to the screen
         }
     }
 }
-// void drawString(...);
+void drawString(char *m, unsigned char x, unsigned char y){ //can draw 22x4 characters on this display
+    int k = 0;
+    while(m[k]!=0){ // cycle through the array m until you hit the null character (when you are done with your message)
+        drawChar(m[k],x+(5*k),y); // draw a character starting with the first in array m. every time I draw a character, I need to shift by 5 pixels so they don't write on top of each other
+        k++;
+    }
+}
 
 #endif
