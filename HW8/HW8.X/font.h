@@ -1,9 +1,7 @@
 #ifndef FONT_H__
 #define FONT_H__
 
-// make these functions:
-// void drawChar(...);
-// void drawString(...);
+#include "ssd1306.h"
 
 // lookup table for all of the ascii characters
 static const char ASCII[96][5] = { // ASCII is a 2D array = [row = character you are trying to draw][5 columns, where each column is a column of pixels to turn on and off to draw that character]
@@ -105,5 +103,18 @@ static const char ASCII[96][5] = { // ASCII is a 2D array = [row = character you
 ,{0x00, 0x06, 0x09, 0x09, 0x06} // 7f ?
 }; // end char ASCII[96][5]
 
+// make these functions:
+void drawChar(unsigned char letter, unsigned char x, unsigned char y){
+    int j;
+    int i;
+    for (j=0;j<5;j++){ // 5x we are going to go into the ASCII table and grab one of those columns
+        unsigned char column = ASCII[letter-0x20][j]; //ASCII[1][j];
+        for (i=0;i<8;i++){ // loop through every pixel in that 8-bit number and decide whether pixel should be turning on or off
+            ssd1306_drawPixel(x+j,y+i,(column>>i)&0b1); // bit-shifting column goes through bits 0-7. column&0b1 puts zeros in bit1-bit7, and all I have is whether bit 0 is a zero or a 1. if both bits are 1, then the resulting bit = 1, otherwise, the resulting bit = 0;
+            ssd1306_update(); // send to the screen
+        }
+    }
+}
+// void drawString(...);
 
 #endif

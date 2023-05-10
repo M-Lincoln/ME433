@@ -18,17 +18,24 @@ int main(){
     ssd1306_setup(); // initialize the OLED screen and its registers
     
     NU32DIP_GREEN = 1; // turn green LED OFF
+    
     while(1) {
+        char m[100];
+        sprintf(m,"hello"); // into char m, put hello. m[0] = h
+        unsigned char character = 0x41; // should be a capital A in ascii
+        unsigned char x_position = 50;
+        unsigned char y_position = 5;
+        drawChar(character, x_position, y_position);
         //blink green LED & 1 pixel on OLED for debugging purposes only
         NU32DIP_GREEN = 0;// turn on GREEN LED
-        // blink one pixel on screen for debugging purposes only
-        ssd1306_drawPixel(1,1,1); // turn ON 1 pixel (x =1, y = 1);
-        ssd1306_update();//sends data to screen
+//        // blink one pixel on screen for debugging purposes only
+//        ssd1306_drawPixel(1,1,1); // turn ON 1 pixel (x =1, y = 1);
+//        ssd1306_update();//sends data to screen
         _CP0_SET_COUNT(0); // set timer to 0
         while (_CP0_GET_COUNT() < 24000000) {} // Delay for 1s
         NU32DIP_GREEN = 1;// blink green LED (turn it off) 
-        ssd1306_drawPixel(1,1,0); // turn OFF pixel (x =1, y = 1);
-        ssd1306_update();//sends data to screen
+//        ssd1306_drawPixel(1,1,0); // turn OFF pixel (x =1, y = 1);
+//        ssd1306_update();//sends data to screen
         _CP0_SET_COUNT(0); // set timer to 0
         while (_CP0_GET_COUNT() < 24000000) {} // Delay for 1s
     }
