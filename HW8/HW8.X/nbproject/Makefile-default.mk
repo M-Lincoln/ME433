@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=nu32dip.c ssd1306.c i2c_master_noint_oled.c
+SOURCEFILES_QUOTED_IF_SPACED=nu32dip.c ssd1306.c i2c_master_noint_oled.c mpu6050.c hw7_template.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint_oled.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/nu32dip.o.d ${OBJECTDIR}/ssd1306.o.d ${OBJECTDIR}/i2c_master_noint_oled.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint_oled.o ${OBJECTDIR}/mpu6050.o ${OBJECTDIR}/hw7_template.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/nu32dip.o.d ${OBJECTDIR}/ssd1306.o.d ${OBJECTDIR}/i2c_master_noint_oled.o.d ${OBJECTDIR}/mpu6050.o.d ${OBJECTDIR}/hw7_template.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint_oled.o
+OBJECTFILES=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint_oled.o ${OBJECTDIR}/mpu6050.o ${OBJECTDIR}/hw7_template.o
 
 # Source Files
-SOURCEFILES=nu32dip.c ssd1306.c i2c_master_noint_oled.c
+SOURCEFILES=nu32dip.c ssd1306.c i2c_master_noint_oled.c mpu6050.c hw7_template.c
 
 
 
@@ -145,6 +145,18 @@ ${OBJECTDIR}/i2c_master_noint_oled.o: i2c_master_noint_oled.c  .generated_files/
 	@${RM} ${OBJECTDIR}/i2c_master_noint_oled.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint_oled.o.d" -o ${OBJECTDIR}/i2c_master_noint_oled.o i2c_master_noint_oled.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/mpu6050.o: mpu6050.c  .generated_files/flags/default/feeff5229bdcd15071aea27630d7385174d103db .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mpu6050.o.d 
+	@${RM} ${OBJECTDIR}/mpu6050.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/mpu6050.o.d" -o ${OBJECTDIR}/mpu6050.o mpu6050.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/hw7_template.o: hw7_template.c  .generated_files/flags/default/a95fa035ff64d4e297ea39aa2be77187235138fa .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/hw7_template.o.d 
+	@${RM} ${OBJECTDIR}/hw7_template.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/hw7_template.o.d" -o ${OBJECTDIR}/hw7_template.o hw7_template.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/b0ba162570513df6aab948d035b8c9b7d087aa0d .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
 	@${MKDIR} "${OBJECTDIR}" 
@@ -163,6 +175,18 @@ ${OBJECTDIR}/i2c_master_noint_oled.o: i2c_master_noint_oled.c  .generated_files/
 	@${RM} ${OBJECTDIR}/i2c_master_noint_oled.o.d 
 	@${RM} ${OBJECTDIR}/i2c_master_noint_oled.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint_oled.o.d" -o ${OBJECTDIR}/i2c_master_noint_oled.o i2c_master_noint_oled.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/mpu6050.o: mpu6050.c  .generated_files/flags/default/9697d8e769bc4b8761436e0b9585ae1af1a2aa03 .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mpu6050.o.d 
+	@${RM} ${OBJECTDIR}/mpu6050.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/mpu6050.o.d" -o ${OBJECTDIR}/mpu6050.o mpu6050.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/hw7_template.o: hw7_template.c  .generated_files/flags/default/13a0d2b584e2efee3bc0b656424044eade4fa8ad .generated_files/flags/default/fceb011ff2e2d0413f553470470866dc2cdcec6b
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/hw7_template.o.d 
+	@${RM} ${OBJECTDIR}/hw7_template.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/hw7_template.o.d" -o ${OBJECTDIR}/hw7_template.o hw7_template.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
