@@ -13,7 +13,7 @@ data1 = [] # column 1
 # data2 = [] # column 2
 
 
-with open('sigD.csv') as f:
+with open('sigC.csv') as f:
     # open the csv file
     reader = csv.reader(f) # will loop through every row in your file
     for row in reader:
@@ -44,14 +44,15 @@ Where:
 '''
 low-pass filter with a Moving Average Filter
 '''
-X = 2 # number of cycles you want to average your data over
+X = 5 # number of cycles you want to average your data over
 filter_output = [] #create blank array that is the output of my filter
 window = [] # create blank array that stores the values to take the average over
 for i in range(len(data1)): # loop through the raw data (datapoints in data1,)
-    print(i)
+    #print(i)
     if len(filter_output)<X+1:
         filter_output.append(data1[i]) # first X times through, fill the array with the raw data values
     else:
+        window = [] # reset window back to blank
         for j in range(X):
             #print('j = '+ str(j))
             window.append(data1[i-X+j+1])
@@ -81,7 +82,7 @@ fig, (ax1, ax2) = plt.subplots(2, 1)
 ax1.plot(t,y1,'k',t,y2,'r')
 ax1.set_xlabel('Time')
 ax1.set_ylabel('Amplitude')
-ax1.title.set_text('SigD, ' + str(X) + ' data points averaged')
+ax1.title.set_text('SigC, ' + str(X) + ' data points averaged')
 ax1.legend(['Raw','FIR (MAF) Filter'])
 ax2.loglog(frq,abs(Y1),'k',frq,abs(Y2),'r') # plotting the fft
 ax2.set_xlabel('Freq (Hz)')
