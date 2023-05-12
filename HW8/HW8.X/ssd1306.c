@@ -60,8 +60,8 @@ int main(){
         ssd1306_update(); // update it on the screen at one time
         while (_CP0_GET_COUNT() < 48000000 / 2 / 100) { // reading data out at 100hz
         }
-        float fps = 24000000/_CP0_GET_COUNT(); // elapsed time
-        sprintf(n,"%f  ",fps); // print value of the core timer...
+        float fps = 24000000/_CP0_GET_COUNT(); // frames per second 
+        sprintf(n,"%f  ",fps); // print value of the frames per second...
         drawString(n,50,22); //to the lower right portion of the screen
         ssd1306_update(); // update it on the screen at one time
     }
