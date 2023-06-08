@@ -1,7 +1,9 @@
 # get a line of raw bitmap and plot the components
+
 import serial
 import numpy as np
 ser = serial.Serial('COM4',230400) # the name of your Pico port
+
 print('Opening port: ')
 print(ser.name)
 
@@ -45,9 +47,8 @@ plt.xlabel('position')
 
 
 # make an array of binary values, 1 = line present, 0 = line not present
-blk = [0 for element in range(len(x))]
+blk = np.array([0 for element in range(len(x))])
 print(range(len(x)))
-print(blk)
 for i in x:
     if(
         reds[i]<90 and
@@ -62,7 +63,7 @@ for i in x:
         blk[i] = 0
 
 # make a square wave to convolve with the noisy signal
-convsig = [0 for element in range(len(x))]
+convsig = np.array([0 for element in range(len(x))])
 for i in x:
     if i>=25 and i<=35:
         convsig[i] = 1
@@ -71,27 +72,77 @@ for i in x:
 
 # find the position signal using the convolution function
 position = np.convolve(blk,convsig, "same")
+position_ulab = np.convolve(blk,convsig, "full")
+#print(blk)
+#print(type(blk))
+#print(convsig)
+#print(type(convsig))
 
 # find the maximum value of the convolved function
 max_position = max(position)
-
+max_position_ulab = max(position_ulab)
 # make an array to store the positions of values from the convolved signal
 avg_pos_array = []
-
+avg_pos_array_ulab = []
 # record all of the position indices where the maximum convolution value is observed
 for i in x:
     if position[i] == max_position:
         avg_pos_array.append(x[i])
 
+y = range(len(position_ulab)) # time array
+
+for i in y:
+    if position_ulab[i] == max_position_ulab:
+        avg_pos_array_ulab.append(y[i])
+
+# COM approx:
+#for j in range(len(blk)):
+#    if blk[j] ==1:
+#        print(j)
+#        if blk[j+1]==1:
+#            if blk[j+2]==1:
+#                if blk[j+3]==1:
+#                    edgeleft=j
+#                else:
+#                    edgeleft=20
+count=0
+for j in range(len(blk)-1):
+    # if consecutive elements are the same:
+    if blk[j]==1 & blk[j]==blk[j+1]:
+        count=count+1
+
+    
 # compute the position of the line
 line_pos = np.average(avg_pos_array)
-print("\nThe average position of the line is " + str(line_pos) + " pixels.\n")
+line_pos_ulab = np.average(avg_pos_array_ulab)
+if 40<=line_pos_ulab<=60:
+    line_pos_ulab_corr = line_pos_ulab*0.4
+elif line_pos_ulab<40:
+    line_pos_ulab_corr = line_pos_ulab-30
+elif line_pos_ulab ==59:
+    line_pos_ulab_corr = line_pos_ulab/2 #when it can't find a line, reads as in the center
+else:
+    line_pos_ulab_corr = line_pos_ulab*0.6
 
+print("\nThe number of consecutive blk readings is " + str(count) + " pixels.\n")
+print("\nThe average position of the line is " + str(line_pos) + " pixels.\n")
+print("\nThe average position_ulab_corr of the line is " + str(line_pos_ulab_corr) + " pixels.\n")
+print("\nThe average position_ulab of the line is " + str(line_pos_ulab) + " pixels.\n")
 # plot the position convolution plot
 fig2 = plt.figure(2)
 fig2 = plt.plot(x,position,"k*-")
 plt.ylabel('Line Present?')
 plt.xlabel('position')
+# plot the position_ulab convolution plot
+fig3 = plt.figure(3)
+fig3 = plt.plot(position_ulab,"k*-")
+plt.ylabel('Line Present?')
+plt.xlabel('position_ulab')
+#Plot blk
+fig4 = plt.figure(4)
+fig4 = plt.plot(blk,"k*-")
+plt.ylabel('BLK 0 or 1')
+plt.xlabel('position on screen')
 plt.show()
 
 # be sure to close the port
